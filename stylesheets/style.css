@@ -1,0 +1,60 @@
+/*
+font-family: 'Roboto', sans-serif;
+font-family: 'Raleway', sans-serif;
+*/
+body {
+  font-family: 'Raleway', sans-serif;
+  padding: 0px;
+  margin: 0px;
+  font-size: 16px;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Roboto', sans-serif;
+}
+
+.navbar.navbar-default{
+  margin-bottom: 0px;
+}
+
+form.navbar-form input[type=text]{
+  width:430px !important;
+  max-width: 100%;
+}
+
+button#menu-toggle.pull-left{
+  background: none;
+  border: none;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+ul.sidebar-nav li.sidebar-brand a{
+  font-family: 'Roboto', sans-serif;
+  font-size: 28px;
+}
+
+.selector-box{
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  background: #FFFBCB;
+  z-index: 10000;
+  width: 100%;
+  border: 2px solid #BE3144;
+  padding: 5px 10px;
+}
+
+.selector-box table{
+  margin: 0px;
+}
+
+.hover-border {
+  border: 2px solid #6EF3D6;
+  z-index: 100000000000;
+}
