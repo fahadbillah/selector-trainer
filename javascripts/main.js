@@ -8,7 +8,6 @@
 	angular
 	.module('AUTONIC', [
 		'ngRoute',
-		'oc.lazyLoad',
 		])
 	.constant('serverRequestAddr', {
 		// kanti : "http://192.168.91.88:5000"
@@ -17,36 +16,15 @@
 		$routeProvider
 		.when('/', {
 			templateUrl: 'view/home.html', // express route http://localhost:3000/home
-			controller: 'HomeCtrl',
-			resolve: {
-				loadAsset: ['$ocLazyLoad', function($ocLazyLoad) {
-					return $ocLazyLoad.load([
-						'javascripts/controllers/HomeCtrl.js'
-						])
-				}]
-			}
+			controller: 'HomeCtrl'
 		})
 		.when('/registration', {
 			templateUrl: 'view/registration.html', // express route http://localhost:3000/home
-			controller: 'RegistrationCtrl',
-			resolve: {
-				loadAsset: ['$ocLazyLoad', function($ocLazyLoad) {
-					return $ocLazyLoad.load([
-						'javascripts/controllers/RegistrationCtrl.js'
-						])
-				}]
-			}
+			controller: 'RegistrationCtrl'
 		})
 		.when('/login', {
 			templateUrl: 'view/login.html', // express route http://localhost:3000/home
-			controller: 'LoginCtrl',
-			resolve: {
-				loadAsset: ['$ocLazyLoad', function($ocLazyLoad) {
-					return $ocLazyLoad.load([
-						'javascripts/controllers/LoginCtrl.js'
-						])
-				}]
-			}
+			controller: 'LoginCtrl'
 		})
 		.otherwise('/');
 		$locationProvider.hashPrefix('');
@@ -258,7 +236,7 @@
 		    	$('.selector-box td:eq(0)').text(getXPath(this));
 		    	$('.selector-box td:eq(1)').text(getCSSPath(this));
 		    	$('.selector-box td:eq(2)').text(getIDSelector(this));
-		    	$('.selector-box td:eq(3)').text(this.outerHTML);
+		    	$('.selector-box td:eq(3)').text(this.outerHTML.substr(0, this.outerHTML.indexOf('>')+1));
 		    }
 			},'*');
 		});
