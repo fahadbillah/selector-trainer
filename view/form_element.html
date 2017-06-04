@@ -1,9 +1,9 @@
-<div class="col-xs-6 col-sm-6 col-md-6 col-md-offset-3">
+<div class="col-md-6 col-md-offset-3">
   <form name="registrationForm" action="" method="POST" class="form-horizontal" role="form">
       <div class="form-group">
         <legend>Signup Form</legend>
       </div>
-      <!-- <pre ng-bind="registrationForm.confirmPassword | json"></pre> -->
+      <!-- <pre ng-bind="registrationForm | json"></pre> -->
       
       <div class="form-group">
         <label for="inputName" class="col-sm-2 control-label">Name</label>
@@ -37,6 +37,45 @@
           <input type="password" class="form-control" id="inputConfirmPassword" name="confirmPassword" ng-model="registration.confirmPassword" placeholder="Confirm Password" required>
           
           <span class="label label-danger" ng-if="registration.confirmPassword !== registration.password">Password miss-match</span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="inputCountry" class="col-sm-2 control-label">Country</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="inputCountry" name="country" ng-model="registration.country" required>
+            <option value="">Select Your Country</option>
+            <option ng-repeat="(key, value) in countries" ng-bind="value" value="{{key}}"></option>
+          </select>
+          <span class="label label-danger" ng-if="registrationForm.country.$invalid && registrationForm.country.$dirty">Required</span>
+        </div>
+      </div>
+      
+      <div class="form-group" ng-if="registration.country == 'US'">
+        <label for="inputState" class="col-sm-2 control-label">Select States</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="inputState" name="state" ng-model="registration.state" required>
+            <option value="">Select Your State</option>
+            <option ng-repeat="(key, value) in USAStates" ng-bind="value.name" ng-value="value.abbreviation"></option>
+          </select>
+          <span class="label label-danger" ng-if="registrationForm.state.$invalid && registrationForm.state.$dirty">Required</span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="inputSex" class="col-sm-2 control-label">Sex</label>
+        <div class="col-sm-10">
+          <div class="radio">
+            <label>
+              <input type="radio" name="sex" ng-model="registration.sex" id="input" value="Male">
+              Male
+            </label>
+            <label>
+              <input type="radio" name="sex" ng-model="registration.sex" id="input" value="Female">
+              Female
+            </label>
+          </div>
+          <span class="label label-danger" ng-if="registrationForm.state.$invalid && registrationForm.state.$dirty">Required</span>
         </div>
       </div>
 

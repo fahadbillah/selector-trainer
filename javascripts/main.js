@@ -18,9 +18,9 @@
 			templateUrl: 'view/home.html', // express route http://localhost:3000/home
 			controller: 'HomeCtrl'
 		})
-		.when('/registration', {
-			templateUrl: 'view/registration.html', // express route http://localhost:3000/home
-			controller: 'RegistrationCtrl'
+		.when('/form_element', {
+			templateUrl: 'view/form_element.html', // express route http://localhost:3000/home
+			controller: 'FormElementCtrl'
 		})
 		.when('/login', {
 			templateUrl: 'view/login.html', // express route http://localhost:3000/home
@@ -36,125 +36,6 @@
 			xPath: '',
 			cssPath: '',
 		};
-
-		var navMenu = [{
-			id: 0,
-			name: 'browse by category',
-			href: '',
-			parentMenu: null
-		},{
-			id: 1,
-			name: 'clothing',
-			href: '',
-			parentMenu: 0
-		},{
-			id: 2,
-			name: 'test 1',
-			href: '',
-			parentMenu: 1
-		},{
-			id: 3,
-			name: 'test 2',
-			href: '',
-			parentMenu: 1
-		},{
-			id: 4,
-			name: 'shoes',
-			href: '',
-			parentMenu: 0
-		},{
-			id: 5,
-			name: 'accessories',
-			href: '',
-			parentMenu: 0
-		},{
-			id: 6,
-			name: 'baby',
-			href: '',
-			parentMenu: 0
-		},{
-			id: 7,
-			name: 'home',
-			href: '',
-			parentMenu: 0
-		},{
-			id: 8,
-			name: 'furniture',
-			href: '',
-			parentMenu: 0
-		},{
-			id: 9,
-			name: 'electronics',
-			href: '',
-			parentMenu: 0
-		},{
-			id: 10,
-			name: 'movies',
-			href: '',
-			parentMenu: 0
-		},{
-			id: 11,
-			name: 'recommendations',
-			href: '',
-			parentMenu: null
-		},{
-			id: 12,
-			name: 'weekly ad',
-			href: '',
-			parentMenu: null
-		},{
-			id: 13,
-			name: 'find stores',
-			href: '',
-			parentMenu: 12
-		},{
-			id: 14,
-			name: 'registries & lists',
-			href: '',
-			parentMenu: 12
-		},{
-			id: 15,
-			name: 'REDcard',
-			href: '',
-			parentMenu: 13
-		},{
-			id: 16,
-			name: 'deals & coupons',
-			href: '',
-			parentMenu: null
-		},{
-			id: 17,
-			name: 'subscriptions',
-			href: '',
-			parentMenu: null
-		},{
-			id: 18,
-			name: 'pharmacy',
-			href: '',
-			parentMenu: null
-		}];
-
-		$rootScope.prevMenu = false;
-		$rootScope.navMenu = navMenu;
-		$rootScope.resetMenu = function() {
-			$rootScope.prevMenu = false;
-			$rootScope.navMenu = navMenu.filter(function(e, i){
-				if (e.parentMenu === null) {
-					return e;
-				}
-			})
-		};
-
-		$rootScope.changeMenu = function(id, showBack) {
-			$rootScope.navMenu = navMenu.filter(function(e, i){
-				if (e.parentMenu === id) {
-					return e;
-				}
-			})
-			$rootScope.prevMenu = showBack;
-		};
-		$rootScope.changeMenu(null, false);
-
 
 		/*==========================================
 		=            jquery event block            =

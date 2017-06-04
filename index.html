@@ -14,7 +14,7 @@
             <ul class="sidebar-nav">
                <li class="sidebar-brand"><a href="" class="">Selector Training</a></li>
                <li><a href="" ng-show="prevMenu" ng-click="resetMenu()" class="ng-hide"><i class="fa fa-chevron-left fa-lg">&nbsp;</i>Back</a></li>
-               <li ng-repeat="menu in navMenu" class="ng-scope"><a href="" ng-bind="menu.name" class="ng-binding"></a></li>
+               <li class="ng-scope"><a href="#/form_element" class="">Form Element</a></li>
             </ul>
          </div>
          <!-- /#sidebar-wrapper--><!-- Page Content-->
@@ -83,7 +83,8 @@
 
       <script src="javascripts/main.js" type="text/javascript"></script>
       <script src="javascripts/controllers/HomeCtrl.js" type="text/javascript"></script>
-      <script src="javascripts/controllers/RegistrationCtrl.js" type="text/javascript"></script>
+      <script src="javascripts/controllers/FormElementCtrl.js" type="text/javascript"></script>
       <script src="javascripts/controllers/LoginCtrl.js" type="text/javascript"></script>
+      <script src="javascripts/services/USAStates.js" type="text/javascript"></script>
    </body>
 </html>
