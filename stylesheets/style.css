@@ -283,3 +283,7 @@ ul.sidebar-nav li.sidebar-brand a{
 .modal-footer .btn-group:last-child > button {
   border-right: 0;
 }
+
+.clickable{
+  cursor: pointer;
+}

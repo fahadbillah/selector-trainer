@@ -42,6 +42,10 @@
 			templateUrl: 'view/videoplay.html', // express route http://localhost:3000/home
 			controller: 'VideoCtrl'
 		})
+		.when('/cms', {
+			templateUrl: 'view/cms.html', // express route http://localhost:3000/home
+			controller: 'CMSCtrl'
+		})
 		.otherwise('/');
 		$locationProvider.hashPrefix('');
 	}])
@@ -113,7 +117,7 @@
 			$("body").off('mouseleave', '*');
 			$('.power-on').removeClass('hide');
 			$('.power-off').addClass('hide');
-			$('tbody td').text('Click play to start')
+			$('.selector-box tbody td').text('Click play to start')
 		});
 
 		$('.power-on').click(function(event) {

@@ -1,0 +1,168 @@
+<div class="row">
+  <div class="col-md-6">
+    <form name="lendForm" ng-submit="lendFormSubmit(lend)" class="form-horizontal" role="form">
+        <div class="form-group">
+          <legend>Book Lend Form</legend>
+        </div>
+    
+        <div class="form-group">
+          <label for="user">User</label>
+          <input type="text" class="form-control" name="user" ng-model="searchUser" placeholder="Search for user">
+          <ul class="list-group" ng-hide="!searchUser">
+            <li class="list-group-item" ng-repeat="user in userList | filter:searchUser track by $index">
+              {{user.name}}
+              <i class="fa fa-check-circle fa-lg pull-right clickable" ng-click="lendSelection(false, user)"></i>
+            </li>
+          </ul>
+        </div>
+    
+        <div class="form-group">
+          <label for="book">Book</label>
+          <input type="text" class="form-control" name="book" ng-model="searchBook" placeholder="Search for book">
+          <ul class="list-group" ng-hide="!searchBook">
+            <li class="list-group-item" ng-repeat="book in bookList | filter:searchBook track by $index">
+              {{book.name}}
+              <i class="fa fa-check-circle fa-lg pull-right clickable" ng-click="lendSelection(book, false)"></i>
+            </li>
+          </ul>
+        </div>
+    
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <!-- <pre ng-bind="lendForm.book | json"></pre> -->
+    </form>
+    <table class="table table-condensed table-hover table-bordered">
+      <thead ng-show="lend.user._id">
+        <tr>
+          <th ng-bind="lend.user._id"></th>
+          <th ng-bind="lend.user.name"></th>
+          <th ng-bind="lend.user.phone"></th>
+          <th ng-bind="lend.user.address"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="book in lend.books track by $index">
+          <td ng-bind="$index + 1"></td>
+          <td ng-bind="book._id"></td>
+          <td ng-bind="book.name"></td>
+          <td ng-bind="book.author"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <table class="table table-condensed table-bordered">
+      <thead>
+        <tr>
+          <th>user</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="lend in lendList track by $index">
+          <td ng-bind="lend.user.name"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <form name="userForm" ng-submit="userFormSubmit(user)" class="form-horizontal" role="form">
+        <div class="form-group">
+          <legend>User Form</legend>
+        </div>
+    
+        <div class="form-group">
+          <label for="user">User</label>
+          <input type="text" class="form-control" name="name" ng-model="user.name" placeholder="User name" required>
+          <span class="label label-danger" ng-if="userForm.name.$invalid && userForm.name.$dirty">Required</span>
+        </div>
+    
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="text" class="form-control" name="phone" ng-model="user.phone" placeholder="User phone" required>
+          <span class="label label-danger" ng-if="userForm.phone.$invalid && userForm.phone.$dirty">Required</span>
+        </div>
+    
+        <div class="form-group">
+          <label for="address">Address</label>
+          <textarea class="form-control" name="address" ng-model="user.address" placeholder="User Address" cols="20" rows="3" required></textarea>
+          <span class="label label-danger" ng-if="userForm.address.$invalid && userForm.address.$dirty">Required</span>
+        </div>
+    
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid || userForm.$pristine">Submit</button>
+        </div>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <table class="table table-condensed table-bordered">
+      <thead>
+        <tr>
+          <th>_id</th>
+          <th>User</th>
+          <th>Phone</th>
+          <th>address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in userList track by $index">
+          <td ng-bind="user._id"></td>
+          <td ng-bind="user.name"></td>
+          <td ng-bind="user.phone"></td>
+          <td ng-bind="user.address"></td>
+        </tr>
+        <tr ng-if="userList.length == 0">
+          <td class="text-center" colspan="4">No user inserted</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <form name="bookForm" ng-submit="bookFormSubmit(book)" class="form-horizontal" role="form">
+        <div class="form-group">
+          <legend>Book Insert Form</legend>
+        </div>
+    
+        <div class="form-group">
+          <label for="name">Book Name</label>
+          <input type="text" class="form-control" name="name" ng-model="book.name" placeholder="Book Name" required>
+          <span class="label label-danger" ng-if="bookForm.name.$invalid && bookForm.name.$dirty">Required</span>
+        </div>
+    
+        <div class="form-group">
+          <label for="author">Author</label>
+          <input type="text" class="form-control" name="author" ng-model="book.author" placeholder="Author Name" required>
+          <span class="label label-danger" ng-if="bookForm.author.$invalid && bookForm.author.$dirty">Required</span>
+        </div>
+    
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" ng-disabled="bookForm.$invalid || bookForm.$pristine">Submit</button>
+        </div>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <table class="table table-condensed table-bordered">
+      <thead>
+        <tr>
+          <th>_id</th>
+          <th>Name</th>
+          <th>Author</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="book in bookList track by $index">
+          <td ng-bind="book._id"></td>
+          <td ng-bind="book.name"></td>
+          <td ng-bind="book.author"></td>
+        </tr>
+        <tr ng-if="bookList.length == 0">
+          <td class="text-center" colspan="3">No book inserted</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
